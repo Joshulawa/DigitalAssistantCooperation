@@ -1,8 +1,21 @@
-# 2022-DigitalAssistantCooperation
+<h1>DAComms</h1> 
+<h3> Previously 2022-DigitalAssistantCooperation </h3>
 
-We are working on the open source Stanford digital assistant ‘Genie’ to enable interaction between genies via messaging services to establish social interaction and cooperation within AI assistance. We aim to develop social systems within our Genies messaging features so that it may contact certain groups based on preference and familiarity as well as more pragmatic approaches of allowing cooperation with your peers – i.e. “Genie can you ask who has yesterday’s lecture notes”.
+<p align="center">
+  <img src="https://github.com/spe-uob/2022-DigitalAssistantCooperation/blob/main/documentation/logo.png"  alt="DAComms Logo"/>
+</p>
 
-Alongside Dr Kit Opie we hope this interactive and open source AI could create a precedent for more social AI’s that work for you, with the interest of you. 
+We were originally working on the open source Stanford Digital Assistant "Genie" to enable interaction between "Artificial Intelligences" via messaging servers to help establish social interaction and cooperation. 
+
+In our research stage, we came across several issues, notably
++ <b>USA Based</b>: Genie requires us to consent to their terms in order to run our own Genie Home Instance (necessary for development), however, their terms require us to be residents of the United States. As such, we couldn't develop add-ons to Genie specifically.
++ <b>Activity</b>: Genie is very inactive, both in terms of development and user base. We are hoping to create something that positively impacts the AI/Online Communications space, if we were to base ourselves entirely on Genie, that'd be impossible.
+
+After realising these issues, we drafted a "re-shift" of focus, which you can read "KitOpieProposal3.odt". This document includes more details on the issues with Genie, and more details on our shift to:
+
+Creating a multi service communication platform which can integrate with any 3rd party services, including Artificial Intelligence/Home Assistant platforms.
+
+Alongside Dr Kit Opie we hope this interactive and user controlled communication solution could create a precedent for more social AI’s that work for you, with the interest of you. 
 
 ## CONTENTS 
 + Development
@@ -15,33 +28,52 @@ Alongside Dr Kit Opie we hope this interactive and open source AI could create a
 ###  Downloads
   - [java](https://www.java.com/en/download/help/download_options.html)
   
-  - [mysql](https://www.mysql.com/downloads/)
+  - [docker](https://docs.docker.com/get-docker/) (We recommend you download Docker Desktop)
   
   - [maven](https://maven.apache.org/download.cgi)
 
-### Setup
+### Setup - Clone the Repository.
 First get a local copy of the repository. You can either:
  - A. Clone the repository from the command line which requires authentication via SSH or a Personal Access Token(Eg, git clone https://github.com/spe-uob/2022-DigitalAssistantCooperation.git) 
  
  - B. Download the repository from GitHub as a Zip file and extract the files locally.
 
-### Database Setup
-Next, we need to setup the MySQL database.
+### 1. Creating and running the Database container.
 
-Log into MySQL from your terminal using `mysql -u root`
+First we will create a network for your containers to interact on.
 
-When you are in the MySQL terminal, copy and paste the contents of [dbGroups.sql](https://github.com/spe-uob/2022-DigitalAssistantCooperation/blob/1f045b925d5b4faa9e0e361e80e5608ca259cebb/Digital%20Assistant%20Cooperation/dbGroups.sql)
+Open your terminal and run the command:
 
-### Spring Server Setup
-In the project directory you just downloaded, run 
+```docker network create dacomms```
+
+Then create a MySQL container:
+
+```docker run --name mysql --network dacomms -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=coredb -d mysql```
+
+### 2. Creating and running the Spring Server container.
+
+In the terminal, go into the repository you cloned and navigate to the \Spring folder.
+
+```cd code\core\Spring```
+
+Create and run the spring server container:
+
 ```
-cd Digital\ Assistant\ Cooperation/Spring
-mvn spring-boot:run
+docker image build -t spring-server .
+docker container run --network dacomms --name spring-server-container -p 8080:8080 -d spring-server
 ```
+   
+### 3. Check the containers were built successfully.
+
+```docker ps``` 
+
+should list 2 containers with the names mysql and spring-server-container.
+
+### ADD SECTION ABOUT USING DOCKER DESKTOP TO MONITOR CONTAINERS.
 
 ## Project progression 
-While working on and researching this project we came across some obstacles that made us reevaluate our approach. Our client, Kit Opie, had envisioned the use of the Stanford open source digital assistant 'Genie', which required consent to our data if we were to implement it within our own project - this wasn't possible since due to different UK/US data laws we had to be US citizens. Implementing the Genie language ThingTalk also proved difficult as Genie itself was not widely used enough and there was less information at our disposal to properly implement the functionality we wanted. Our client's vision for AI which involved natural language processing and intelligent contact management was achievable to a point, but in order to move forward we had to focus the functionality on more specific scenarios. 
-Here is our [new project proposal](https://github.com/spe-uob/2022-DigitalAssistantCooperation/blob/main/KitOpieProposal3.odt), in which we refined our project goal while still keeping Mr Opie's original interests in mind. Particularly from an anthropological perspective, we wanted to, without the use of Genie, create a digital assistant which was specifically in the interest of the user, not private company affiliated, which would positively impact the way we communicate with each other using mutiple interfaces. 
+While working on and researching this project we came across some obstacles that made us reevaluate our approach. Our client, Dr Kit Opie, had envisioned the use of the Stanford open source digital assistant 'Genie', which required consent to our data if we were to implement it within our own project - this wasn't possible since due to different UK/US data laws we had to be US citizens. Implementing the Genie language ThingTalk also proved difficult as Genie itself was not widely used enough and there was less information at our disposal to properly implement the functionality we wanted. Our client's vision for AI which involved natural language processing and intelligent contact management was achievable to a point, but in order to move forward we had to focus the functionality on more specific scenarios. 
+Here is our [new project proposal](https://github.com/spe-uob/2022-DigitalAssistantCooperation/blob/main/KitOpieProposal3.odt), in which we refined our project goal while still keeping Dr Kit Opie's original interests in mind. Particularly from an anthropological perspective, we wanted to, without the use of Genie, create a digital assistant which was specifically in the interest of the user, not private company affiliated, which would positively impact the way we communicate with each other using mutiple interfaces. 
 
 ## Gantt chart
 [Link to gantt chart](https://github.com/spe-uob/2022-DigitalAssistantCooperation/blob/main/Project%20Management/Software%20Engineering%20Project%20Gantt%20chart.xlsx "Project Gantt Chart")
