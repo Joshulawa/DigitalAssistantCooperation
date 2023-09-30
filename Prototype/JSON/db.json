@@ -1,0 +1,35 @@
+{
+  "genieUsers": [
+    {
+      "userID":"1",
+      "fName":"Hannah",
+      "sName":"Kent",
+      "email":"bq21027@bristol.ac.uk",
+      "relationships": [
+        {
+          "userID":"2",
+          "fName":"Joshua",
+          "sName":"Ward",
+          "email":"vz3012@bristol.ac.uk",
+          "extra": [ 
+            {
+              "connection 1":"coursemate"
+            }
+          ]
+        },
+        {
+          "userID":"3",
+          "fName":"Hiromichi",
+          "sName":"Yano",
+          "email":"fg3107@bristol.ac.uk",
+          "extra":[
+            {
+              "connection 1":"coursemate",
+              "connection 2":"grandfather"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

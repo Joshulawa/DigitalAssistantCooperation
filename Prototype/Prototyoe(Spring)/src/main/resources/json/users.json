@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "name": "Hiromichi",
+    "email": "aa1234@bristol.ac.uk"
+  },
+  {
+    "id": 2,
+    "name": "Joshua",
+    "email": "bb1234@bristol.ac.uk"
+  },
+  {
+    "id": 3,
+    "name": "Hannah",
+    "email": "cc1234@bristol.ac.uk"
+  },
+  {
+    "id": 4,
+    "name": "Xander",
+    "email": "dd1234@bristol.ac.uk"
+  }
+]

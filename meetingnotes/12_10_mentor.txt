@@ -1,0 +1,15 @@
+# Kanban Board:
+Add milestones to tasks such as MVP, beta , final product.
+Make sure there are tasks in the todo column.
+Assign issues to induviduals.
+
+# MVP:
+Due around 5 - 10th December but we need to have it ready before then as CSA is due around that time.
+
+Our MVP should focus on getting messaging between Genies working through the Genie terminal via a messaging service - most likely Matrix
+Can make a UML diagram of our product to make it easier to delegate the tasks.
+
+# To do:
+Set up github correctly.
+Everyone -> Complete the preparation tasks such as user stories and initial stakeholders.
+Xander -> Investigate Genie and create an instance of it for us to explore and test.

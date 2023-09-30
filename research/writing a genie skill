@@ -1,0 +1,33 @@
+Following the Stanford Genie development wiki: 
+https://wiki.almond.stanford.edu/en/genie-guide
+
+Basic process goes (with concerns to creating a skill without the help of an API and rather a JS program):
+
+- Download the genie sdk and create a new genie skill, this generates a folder with a skill manifest (class definition of the skill)
+
+- Skill manifest contains functions that can be performed by Genie
+
+- #_[canonical=[singular noun phrase for query, imperative verb phrase for action in " "] (can be a list, in qoutes)
+This is a tag you use inside each function and for the entire skill that indicates how the genie can form natural language expressions for the skill ie how you 
+would construct a command for a function of that skill.
+Canonical forms info: https://wiki.almond.stanford.edu/en/references/genie-annotation
+
+- Using APIs: the examples use APIs that seem to be already baked in or something. If you are using a different api need to use
+the loader: @org.thingpedia.generic_rest.v1() (you may not im not sure).
+and use the tag: #[url=" "]; 
+
+- Parsing API JSON results: This is an example of the first line of a function signature which explains it
+query get(out fact : String #[json_key="fact"]) --- You must include the type of output ie String.
+
+- You must train your skills, this will take a few hours and will result in a model that can then be implemented into a genie instance.
+
+NOTE: Use streams and monitor streams to enable a genie program to run in the background once activated so that we can recieve messages automatically.
+See monitorable lists (i think that it will update when something is appended to it or perhaps it's just when the function returns.)
+https://wiki.almond.stanford.edu/en/getting-started/intro-thingtalk
+Also see:
+poll_interval (required for monitorable queries): This is used to specify how often the query will be fired if it is monitored. 
+It takes a duration, e.g., #[poll_interval=5min].
+
+Issues: 
+- Having trouble training my model.
+
