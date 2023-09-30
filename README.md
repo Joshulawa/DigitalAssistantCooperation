@@ -3,7 +3,7 @@
 <h3> Previously 2022-DigitalAssistantCooperation </h3>
 
 <p align="center">
-  <img src="https://github.com/spe-uob/2022-DigitalAssistantCooperation/blob/main/documentation/logo.png"  alt="DAComms Logo"/>
+  <img src="https://github.com/Joshulawa/DigitalAssistantCooperation/blob/main/documentation/logo.png"  alt="DAComms Logo"/>
 </p>
 
 We were originally working on the open source Stanford Digital Assistant "Genie" to enable interaction between "Artificial Intelligences" via messaging servers to help establish social interaction and cooperation. 
